@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,5 +33,12 @@ public class TeamServiceImpl implements TeamService {
         }catch(Exception ex){
             throw new EntityNotFoundException();
         }
+    }
+
+    @Override
+    public List<Match> findAllMatchesByTeamNameAndYear(String teamName, Integer year) {
+        LocalDate startDate = LocalDate.of(year, 1, 1);
+        LocalDate endDate = LocalDate.of(year, 12, 31);
+        return matchRepository.getAllMatchesByTeamNameAndYear(teamName, startDate, endDate);
     }
 }
