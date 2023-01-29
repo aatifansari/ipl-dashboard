@@ -1,0 +1,20 @@
+.MatchPage {
+    display : grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.MatchPage > div > h1 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.year-selector {
+    justify-self: end;
+    padding: 20px;
+}
+
+.year-selector > h3 {
+    text-align: center;
+    margin-top: 30px;
+}
+

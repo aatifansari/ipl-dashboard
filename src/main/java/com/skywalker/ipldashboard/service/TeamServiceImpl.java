@@ -36,6 +36,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public List<Team> findAllTeams() {
+        return teamRepository.findAll();
+    }
+
+    @Override
     public List<Match> findAllMatchesByTeamNameAndYear(String teamName, Integer year) {
         LocalDate startDate = LocalDate.of(year, 1, 1);
         LocalDate endDate = LocalDate.of(year, 12, 31);

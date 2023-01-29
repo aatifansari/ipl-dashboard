@@ -9,5 +9,7 @@ public interface TeamService {
 
     Team findTeamDetailsByName(String teamName);
 
+    List<Team> findAllTeams();
+
     List<Match> findAllMatchesByTeamNameAndYear(String teamName, Integer year);
 }

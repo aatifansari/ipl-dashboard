@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -15,16 +16,21 @@ import java.util.List;
 public class TeamController {
 
     @Autowired
-    TeamService matchService;
+    TeamService teamService;
+
+    @GetMapping("/team")
+    public ResponseEntity<Iterable<Team>> getAllTeam(){
+        return ResponseEntity.ok(teamService.findAllTeams());
+    }
 
     @GetMapping("/team/{teamName}")
     public ResponseEntity<Team> getTeam(@PathVariable(name = "teamName") String teamName){
-        return ResponseEntity.status(HttpStatus.OK).body(matchService.findTeamDetailsByName(teamName));
+        return ResponseEntity.status(HttpStatus.OK).body(teamService.findTeamDetailsByName(teamName));
     }
 
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getTeam(@PathVariable("teamName") String teamName,
                                @RequestParam("year") Integer year){
-        return matchService.findAllMatchesByTeamNameAndYear(teamName, year);
+        return teamService.findAllMatchesByTeamNameAndYear(teamName, year);
     }
 }
