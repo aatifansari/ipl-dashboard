@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -16,6 +17,11 @@ public class TeamController {
 
     @Autowired
     TeamService teamService;
+
+    @GetMapping("/team")
+    public ResponseEntity<Iterable<Team>> getAllTeam(){
+        return ResponseEntity.ok(teamService.findAllTeams());
+    }
 
     @GetMapping("/team/{teamName}")
     public ResponseEntity<Team> getTeam(@PathVariable(name = "teamName") String teamName){
