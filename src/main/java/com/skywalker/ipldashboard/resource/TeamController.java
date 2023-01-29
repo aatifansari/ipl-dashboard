@@ -15,16 +15,16 @@ import java.util.List;
 public class TeamController {
 
     @Autowired
-    TeamService matchService;
+    TeamService teamService;
 
     @GetMapping("/team/{teamName}")
     public ResponseEntity<Team> getTeam(@PathVariable(name = "teamName") String teamName){
-        return ResponseEntity.status(HttpStatus.OK).body(matchService.findTeamDetailsByName(teamName));
+        return ResponseEntity.status(HttpStatus.OK).body(teamService.findTeamDetailsByName(teamName));
     }
 
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getTeam(@PathVariable("teamName") String teamName,
                                @RequestParam("year") Integer year){
-        return matchService.findAllMatchesByTeamNameAndYear(teamName, year);
+        return teamService.findAllMatchesByTeamNameAndYear(teamName, year);
     }
 }
