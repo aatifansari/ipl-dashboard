@@ -10,12 +10,24 @@ export const MatchPage = () => {
 
     const [matches, setMatches] = useState([]);
     const { teamName, year } = useParams();
+    const token = JSON.parse(sessionStorage.getItem('token')).token;
+
     // const  teamName  = "Delhi Capitals";
 
     useEffect(
         () => {
+            const url = `http://localhost:8080/team/${teamName}/matches?year=${year}`;
+            const params = {
+                method : 'GET',
+                headers: { 
+                    "Authorization" : `Bearer ${token}`,
+                    "Access-Control-Allow-Origin": "*",
+                    "Accept": 'application/json',
+                    "Origin" : "http://localhost:3000"
+                  }
+            }
             const fetchMatches = async() => {
-                const response = await fetch(`http://localhost:8080/team/${teamName}/matches?year=${year}`);
+                const response = await fetch(url,params);
                 const data = await response.json();
                 // console.log(data);
                 setMatches(data);

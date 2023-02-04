@@ -9,11 +9,21 @@ import './HomePage.css';
 export const HomePage = () => {
 
     const [team, setTeams] = useState([]);
-
+    const token = JSON.parse(sessionStorage.getItem('token')).token;
     useEffect(
         () => {
+            const url = 'http://localhost:8080/team';
+            const params = {
+              method : 'GET',
+              headers: { 
+                "Authorization" : `Bearer ${token}`,
+                "Access-Control-Allow-Origin": "*",
+                "Accept": 'application/json',
+                "Origin" : "http://localhost:3000"
+              }
+            }
             const fetchTeams = async() => {
-                const response = await fetch(`http://localhost:8080/team`);
+                const response = await fetch(url,params);
                 const data = await response.json();
                 // console.log(data);
                 setTeams(data);
