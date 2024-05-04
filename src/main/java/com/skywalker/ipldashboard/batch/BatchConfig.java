@@ -1,4 +1,4 @@
-package com.skywalker.ipldashboard.data;
+package com.skywalker.ipldashboard.batch;
 
 import com.skywalker.ipldashboard.entity.Match;
 import org.springframework.batch.core.Job;
@@ -14,14 +14,12 @@ import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilde
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import java.time.LocalDate;
 
 @Configuration
 @EnableBatchProcessing

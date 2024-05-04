@@ -1,4 +1,4 @@
-package com.skywalker.ipldashboard.data;
+package com.skywalker.ipldashboard.batch;
 
 import com.skywalker.ipldashboard.entity.Team;
 import org.slf4j.Logger;
@@ -7,13 +7,11 @@ import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -22,20 +20,17 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
     private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
 
-//    private final JdbcTemplate jdbcTemplate;
-
     private final EntityManager em;
 
     @Autowired
     public JobCompletionNotificationListener(EntityManager em) {
-//        this.jdbcTemplate = jdbcTemplate;
         this.em = em;
     }
 
     @Override
     public void afterJob(JobExecution jobExecution) {
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
-            log.info("!!! JOB FINISHED! Time to verify the results");
+            log.info("JOB FINISHED !!! Time to verify the results");
 
             Map<String, Team> teamData = new HashMap<>();
             em.createQuery("select m.team1, count(*) from Match m group by m.team1", Object[].class)

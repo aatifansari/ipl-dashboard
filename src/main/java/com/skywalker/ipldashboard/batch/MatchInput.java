@@ -1,4 +1,4 @@
-package com.skywalker.ipldashboard.data;
+package com.skywalker.ipldashboard.batch;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
