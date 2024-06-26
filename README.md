@@ -61,58 +61,141 @@ Full-stack web application build using SpringBoot and React.
 * MySQL
 * React
 
-
+___
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### Server Installation 
 
+#### Prerequisites
+- Java 8
+- Set JAVA_HOME in environment variable
+- Maven (optional)  
+Run below command to check java and maven is installed correctly.
+```
+java --version
+```
+```
+mvn --version
+```
 
-### Prerequisites
+Note: Use `./mvnw` in place of `mvn` if maven is not installed. If on Unix system give permission using below code.
+```
+chmod +x ./mvnw
+```
 
-Download and install the following to setup the runtime environment for
-* Back-End - Java 8
-* Front-End - Node (npm to download the dependecy)
-
-### Installation Backend
-
-1. Clone the repo
+#### 1. Clone the repo
    ```sh
    git clone 'https://github.com/aatifansari/ipl-dashboard.git'
    ```
-2. Open terminal in the root project directory. Run mvn clean install
+
+#### 2. Install Maven project  
+Navigate to root directory and install the maven project.
    ```sh
+   cd ipl-dashboard
    mvn clean install
    ```
-3. Run the application 
-   ```js
+
+#### 3. Run the application
+
+   ```sh
    mvn spring-boot:run
    ```
-   OR Navigate to target directory and the following commands in the termal.
+   `OR`  
+
+   Navigate to target directory where jar is created and run the below code.
    
-   ```js
+   ```sh
    java -jar ipl-dashboard-0.0.1-SNAPSHOT.jar
    ```
+#### Step 4: Accessing the Application  
+Once the application is running, you can access it in your web browser at http://localhost:9000.
+___
 
-### Installation UI
+<!-- UI GUIDE -->
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+### UI Installation 
 
-1. Clone the repo
+#### Prerequisites
+- Nodejs  
+Run below command to check node is installed successfully.
+```
+node --version
+```
+
+#### Step 1: Clone the Repository 
    ```sh
    git clone 'https://github.com/aatifansari/ipl-dashboard.git'
    ```
-2. Install NPM packages - Node will automatically scan packge.json and download all required dependency.
+#### Step 2: Install NPM packages  
+Navigate to **frontend** directory and install the required NPM packages using the below command
+
    ```sh
+   cd ipl-dashboard/src/frontend
    npm install
    ```
-3. Run the application on default port - http://localhost:3000 -
+#### Step 3: Run the application  
+To start the application, run the following command. This will run the application on the default port http://localhost:3000.
    ```js
    npm start
    ```
-   
-   
-<!-- USAGE EXAMPLES -->
+#### Step 4: Accessing the Application  
+Once the application is running, you can access it in your web browser at http://localhost:3000.
+
+#### Additional Notes
+- Custom Port: If you need to run the application on a different port, you can specify it by modifying the start script in the package.json file or by setting the PORT environment variable before running npm start.  
+
+___
+
+<!-- DOCKER GUIDE -->
+
+### Docker Installation Guide
+
+This guide provides step-by-step instructions to set up and run the **Project Name** application using Docker image.
+
+#### Prerequisites
+- Docker Desktop (Docker Daemon)  
+Before you begin, ensure you have installed and running on your system. You can download Docker from [Docker's official website](https://www.docker.com/get-started). Run below code to check docker version.
+```
+docker --version
+```
+
+#### Step 1: Clone the Repository  
+Clone the `ipl-dashboard` repository 
+
+```bash
+git clone 'https://github.com/aatifansari/ipl-dashboard.git
+```
+
+#### Step 2: Build the Docker Image  
+Navigate to the project directory and build the docker image using the provided `DockerFile`
+
+```bash
+cd ipl-dashboard/src/frontend
+```
+
+```bash
+docker build -t ipl-dashboard-ui:0.0.1-RELEASE .
+```
+
+#### Step 3: Run the Docker Container  
+
+Once the image is built, you can run the docker container using the following command:
+
+```bash
+docker run -p 8080:80 --name ipl-dashboard ipl-dashboard-ui
+```
+Note: `-p` is used to forward network calls on container port:80 to your system port:8080
+
+#### Step 4: Access the Application
+
+Open a web browser and navigate to http://localhost:8080 to access the application.
+
+___
+
+
+<!-- USAGE -->
 ## Usage
 
 * ### Login Screen
