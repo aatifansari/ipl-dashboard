@@ -7,8 +7,8 @@ import { TeamTile } from '../components/TeamTile';
 import './HomePage.css';
 
 export const HomePage = () => {
-
     const [team, setTeams] = useState([]);
+
     const token = JSON.parse(sessionStorage.getItem('token')).token;
     useEffect(
         () => {

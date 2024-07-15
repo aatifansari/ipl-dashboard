@@ -22,7 +22,7 @@ public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "password")

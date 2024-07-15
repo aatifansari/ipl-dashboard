@@ -1,12 +1,26 @@
+.header-section {
+    margin-bottom: 50px;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 50px;
+    grid-row-gap: 40px;
+    margin: 40px;
 }
 
 .app-name {
     font-size: 3rem;
     margin: 30px auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 524px){
+    .team-grid{
+        grid-template-columns: 1fr;
+        margin: 10px;
+        grid-row-gap: 30px;
+    }
 }
 

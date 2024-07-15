@@ -1,7 +1,35 @@
 .TeamTile {
-    height: 170px;
+    height: 150px;
     text-align: center;
     border: 1px solid whitesmoke;
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(to top, #09203f 0%, #537895 100%); */
+    background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
 }
+
+.TeamTile h1 a {
+    color: #292828;
+    text-decoration: none;
+}
+
+.TeamTile h1 a:hover {
+    color: #508bc7;
+    text-decoration: none;
+}
+
+.TeamTile:hover{
+    box-shadow: -9px 7px 30px 10px rgba(0,0,0,0.56);
+-webkit-box-shadow: -9px 7px 30px 10px rgba(0,0,0,0.56);
+-moz-box-shadow: -9px 7px 30px 10px rgba(0,0,0,0.56);
+}
+
+@media screen and (max-width: 425px){
+    .TeamTile{
+        height: 100px;
+    }
+}
+
