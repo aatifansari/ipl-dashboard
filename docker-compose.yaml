@@ -1,0 +1,29 @@
+# Docker Compose file
+
+services:
+  app-server:
+    build:
+      context: ipl-dashboard-server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - backend
+      - frontend
+
+  app-client:
+    build:
+      context: ipl-dashboard-client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    restart: always
+    depends_on:
+      - app-server
+    networks:
+      - frontend
+
+networks:
+  backend:
+  frontend:
