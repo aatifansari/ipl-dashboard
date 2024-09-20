@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+<!-- IPL DASHBOARD UI -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Available Scripts
+<h1 align = "center"> IPL DashBoard UI</h1>
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### `npm start`
+IPL Dashboard Server is a springboot project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Features:
+* View individual team performance by year.
+* View all team matches for the past years.
+* Pie-Chart - Display the team performance for the particular season.
+* Http Basic authentication implemented using Spring Security.
+* Secured REST- Point using JWT token for authorization.
 
-### `npm test`
+### Built With
+* REACT 18.2.0
+* Bootstrap 5.3.3
+* React Router DOM 6.3.3
+___
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- GETTING STARTED -->
+## Getting Started
 
-### `npm run build`
+#### Prerequisites
+- Node.js  
+- npm  
+  Check Node.js and npm is installed correctly.
+  ```
+  node --version
+  ```
+  ```
+  npm --version
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Step 1: Clone the Repository
+   ```sh
+   git clone 'https://github.com/aatifansari/ipl-dashboard.git'
+   ```
+#### Step 2: Install NPM packages
+Navigate to `ipl-dashboard-client` from root directory and install the React project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   cd ipl-dashboard/src/frontend
+   npm install
+   ```
+#### Step 3: Run the application
+To start the application, run the following command. This will run the application on the default port http://localhost:3000.
+   ```js
+   npm start
+   ```
+#### Step 4: Accessing the Application
+Once the application is running, you can access it in your web browser at http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+___
 
-### `npm run eject`
+### Build Docker Image
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Prerequisites
+- Docker Desktop (Docker Daemon)  
+  Before you begin, ensure you have docker installed and running on your system. You can download Docker from [Docker's official website](https://www.docker.com/get-started).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Check docker is installed
+  ```sh
+  cd docker --version
+  ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+&nbsp;
+#### Step 1: Build the Docker Image
+Navigate to `ipl-dashboard-client` and build the image using below command
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ```sh
+  cd ipl-dashboard-client
+  docker build -t ipl-dashboard-server:0.0.1-RELEASE .
+  ```
 
-## Learn More
+[//]: # (&nbsp;)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Step 2: Run the Docker Container
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once the image is built, you can run the docker container using the following command:
 
-### Code Splitting
+```bash
+docker run -p 3000:80 --name ipl-server ipl-dashboard-server
+```
+Note: `-p` is used to forward network calls on container port:8080 to your system port:300
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Step 3: Access the Application
 
-### Analyzing the Bundle Size
+Open a web browser and navigate to http://localhost:3000/login to access the login page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- MARKDOWN LINKS & IMAGES -->
+[linkedin-url]: https://www.linkedin.com/in/mohd-atif-9b1122173/
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
