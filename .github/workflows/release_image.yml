@@ -2,13 +2,13 @@
 name: CD Pipeline for ipl-dashboard
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
