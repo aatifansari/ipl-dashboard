@@ -2,6 +2,7 @@
 name: CD Pipeline for ipl-dashboard
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
