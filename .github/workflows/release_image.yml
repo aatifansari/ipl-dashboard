@@ -1,0 +1,55 @@
+#Release Images
+name: CD Pipeline for ipl-dashboard
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permission:
+  contents: read
+  packages: write
+  actions: write
+
+jobs:
+  Release docker-images:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: mohdatif95466
+      REPO: ipl-dashboard
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          repository: aatifansari/${{ env.REPO }}
+          ref: '${{ github.ref }}'
+          path: '${{ github.workspace }}/${{ env.REPO }}'
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-version: '1.8'
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: docker build -t ${{ vars.DOCKER_USERNAME }}/ipl-dashboard-server:1.0.${GITHUB.RUN_NUMBER} .
+
+      - name: Push Docker Image
+        run: docker push ${{ vars.DOCKER_USERNAME }}/ipl-dashboard-server:1.0.${GITHUB.RUN_NUMBER}
+
+
+
+
+
+
