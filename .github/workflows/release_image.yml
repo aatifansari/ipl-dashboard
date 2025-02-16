@@ -9,13 +9,13 @@ on:
     branches:
       - main
 
-permission:
+permissions:
   contents: read
   packages: write
   actions: write
 
 jobs:
-  Release docker-images:
+  release_docker_images:
     runs-on: ubuntu-latest
     env:
       DOCKER_USERNAME: mohdatif95466
@@ -43,7 +43,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t ${{ vars.DOCKER_USERNAME }}/ipl-dashboard-server:1.0.${GITHUB.RUN_NUMBER} .
+        run: docker build -t ${{ vars.DOCKER_USERNAME }}/ipl-dashboard-server:1.0.${GITHUB.RUN_NUMBER} ./ipl-dashboard-client
 
       - name: Push Docker Image
         run: docker push ${{ vars.DOCKER_USERNAME }}/ipl-dashboard-server:1.0.${GITHUB.RUN_NUMBER}
